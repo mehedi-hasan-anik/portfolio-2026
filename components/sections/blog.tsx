@@ -36,9 +36,10 @@ export function Blog() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {posts.map((post, i) => (
-          <Reveal key={post.slug} delay={i * 0.06}>
+          <Reveal key={post.link} delay={i * 0.06}>
             <Link
-              href={`/blog/${post.slug}`}
+              href={post?.link}
+              target="_blank" rel="noopener noreferrer" aria-label={`Open ${post.title}`}
               className="group relative block h-full p-8 border border-foreground/10 hover:border-amber/40 transition-all duration-500 hover:bg-foreground/[0.02]"
             >
               <div className="flex items-center gap-3 mb-6">

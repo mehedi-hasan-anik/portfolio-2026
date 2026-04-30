@@ -185,6 +185,7 @@ export type Post = {
   readTime: string;
   tag: string;
   slug: string;
+  link: string;
 };
 
 export const posts: Post[] = [
@@ -196,6 +197,7 @@ export const posts: Post[] = [
     readTime: '8 min read',
     tag: 'State',
     slug: 'redux-to-zustand-migration',
+    link: 'https://anikm2283.medium.com/redux-to-zustand-when-the-migration-is-worth-it-8465e1f35b6d'
   },
   {
     title: 'NX Monorepos for Next.js Teams — A Field Report',
@@ -205,6 +207,7 @@ export const posts: Post[] = [
     readTime: '12 min read',
     tag: 'Architecture',
     slug: 'nx-monorepo-nextjs',
+    link: '2'
   },
   {
     title: 'PSD to React, Done Right',
@@ -214,6 +217,7 @@ export const posts: Post[] = [
     readTime: '10 min read',
     tag: 'Frontend',
     slug: 'psd-to-react-workflow',
+    link: '3'
   },
   {
     title: 'Material UI vs Tailwind — A Frontend Engineer Picks',
@@ -223,5 +227,6 @@ export const posts: Post[] = [
     readTime: '14 min read',
     tag: 'CSS',
     slug: 'mui-vs-tailwind',
+    link: '4'
   },
 ];
