@@ -200,14 +200,14 @@ export const posts: Post[] = [
     link: 'https://anikm2283.medium.com/redux-to-zustand-when-the-migration-is-worth-it-8465e1f35b6d'
   },
   {
-    title: 'NX Monorepos for Next.js Teams — A Field Report',
+    title: 'Why Use Turborepo?',
     excerpt:
-      'A year of running production Next.js apps inside an NX monorepo behind Nginx. Build caching, shared UI libs, and the gotchas nobody mentions in the docs.',
+      'Turborepo is a high-performance build system that uses intelligent caching and parallel execution to eliminate redundant tasks in monorepos. It speeds up development by sharing build results across your team, ensuring you never run the same command twice.',
     date: 'Feb 02, 2026',
     readTime: '12 min read',
     tag: 'Architecture',
     slug: 'nx-monorepo-nextjs',
-    link: '2'
+    link: 'https://anikm2283.medium.com/why-use-turborepo-be3c7f134744'
   },
   {
     title: 'PSD to React, Done Right',
