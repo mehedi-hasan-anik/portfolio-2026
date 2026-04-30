@@ -111,6 +111,7 @@ export type Project = {
   href?: string;
   year: string;
   status: 'Production' | 'Internal' | 'Open Source' | 'In Progress';
+  liveLink: string;
 };
 
 export const projects: Project[] = [
@@ -122,6 +123,7 @@ export const projects: Project[] = [
     stack: ['React', 'Next.js', 'Redux', 'NX Monorepo', 'Nginx'],
     year: '2024',
     status: 'Production',
+    liveLink: 'https://lims.dife.gov.bd/'
   },
   {
     title: 'EMS — Education Management System',
@@ -131,6 +133,7 @@ export const projects: Project[] = [
     stack: ['React', 'Next.js', 'Redux'],
     year: '2023',
     status: 'Production',
+    liveLink: 'http://mbe.gov.bd/'
   },
   {
     title: 'Simec News',
@@ -140,6 +143,7 @@ export const projects: Project[] = [
     stack: ['React', 'Next.js', 'Redux'],
     year: '2024',
     status: 'Production',
+    liveLink: 'https://simecnews.com/'
   },
   {
     title: 'Simec Career',
@@ -149,6 +153,7 @@ export const projects: Project[] = [
     stack: ['React', 'Next.js', 'Redux'],
     year: '2024',
     status: 'Production',
+    liveLink: 'https://career.simec-inc.net/'
   },
   {
     title: 'Bus365 — Online Bus Ticketing',
@@ -158,6 +163,7 @@ export const projects: Project[] = [
     stack: ['React', 'react-router', 'Redux', 'styled-components'],
     year: '2022',
     status: 'Production',
+    liveLink: 'https://bus365demo.bdtask-demo.com/'
   },
   {
     title: 'Personal Portfolio',
@@ -168,6 +174,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'Tailwind', 'shadcn/ui', 'motion'],
     year: '2026',
     status: 'In Progress',
+    liveLink: ''
   },
 ];
 

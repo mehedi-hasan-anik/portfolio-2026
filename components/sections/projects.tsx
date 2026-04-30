@@ -62,8 +62,8 @@ export function Projects() {
 
               <div className="md:col-span-1 flex md:justify-end items-start">
                 <div className="grid h-10 w-10 place-items-center border border-foreground/10 group-hover:border-amber group-hover:bg-amber group-hover:text-background transition-colors">
-                  {p.href ? (
-                    <Link href={p.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${p.title}`}>
+                  {p.liveLink ? (
+                    <Link href={p.liveLink} target="_blank" rel="noopener noreferrer" aria-label={`Open ${p.title}`}>
                       <ArrowUpRight className="h-4 w-4 -rotate-12 group-hover:rotate-0 transition-transform" />
                     </Link>
                   ) : (
