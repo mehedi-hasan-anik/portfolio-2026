@@ -99,7 +99,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: { icon: '/favicon.ico', apple: '/apple-icon.png' },
+  icons: { icon: '/images/favicon.ico', apple: '/apple-icon.png' },
   category: 'technology',
 };
 
