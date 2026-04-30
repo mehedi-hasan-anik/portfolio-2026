@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ─── Light theme (default) ──────────────────────────────── */
+  :root {
+    --background: 38 40% 96%;
+    --foreground: 24 15% 10%;
+    --card: 38 40% 98%;
+    --card-foreground: 24 15% 10%;
+    --popover: 38 40% 97%;
+    --popover-foreground: 24 15% 10%;
+    --primary: 24 15% 10%;
+    --primary-foreground: 38 40% 96%;
+    --secondary: 38 30% 90%;
+    --secondary-foreground: 24 15% 10%;
+    --muted: 38 30% 92%;
+    --muted-foreground: 24 8% 35%;
+    --accent: 28 80% 38%;
+    --accent-foreground: 38 40% 96%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 38 40% 96%;
+    --border: 24 8% 85%;
+    --input: 24 8% 85%;
+    --ring: 28 80% 38%;
+    --amber: 28 80% 38%;
+    --amber-glow: 28 90% 50%;
+    --radius: 0.25rem;
+    color-scheme: light;
+  }
+
+  /* ─── Dark theme ─────────────────────────────────────────── */
+  .dark {
+    --background: 24 10% 5%;
+    --foreground: 38 30% 92%;
+    --card: 24 10% 7%;
+    --card-foreground: 38 30% 92%;
+    --popover: 24 10% 6%;
+    --popover-foreground: 38 30% 92%;
+    --primary: 38 30% 92%;
+    --primary-foreground: 24 10% 5%;
+    --secondary: 24 8% 12%;
+    --secondary-foreground: 38 30% 92%;
+    --muted: 24 8% 11%;
+    --muted-foreground: 38 12% 60%;
+    --accent: 35 75% 55%;
+    --accent-foreground: 24 10% 5%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 38 30% 92%;
+    --border: 24 8% 14%;
+    --input: 24 8% 14%;
+    --ring: 35 75% 55%;
+    --amber: 35 75% 55%;
+    --amber-glow: 35 95% 65%;
+    color-scheme: dark;
+  }
+
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: hsl(var(--amber) / 0.85);
+    color: hsl(var(--background));
+  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--amber) / 0.5); }
+
+  input:-webkit-autofill,
+  textarea:-webkit-autofill {
+    -webkit-text-fill-color: hsl(var(--foreground));
+    -webkit-box-shadow: 0 0 0 30px hsl(var(--background)) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+/* ─── Keyframes ────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes word-up {
+  from { transform: translate3d(0, 100%, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 0.8; }
+}
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes nav-mount {
+  from { transform: translate3d(0, -40px, 0); opacity: 0; }
+  to   { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.5); opacity: 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Component utilities ──────────────────────────────────── */
+@layer utilities {
+  /* IntersectionObserver-driven reveal — zero JS animation cost */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  .reveal.is-visible {
+    animation: fade-up 0.7s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards;
+    animation-delay: var(--reveal-delay, 0s);
+  }
+
+  /* On-mount fade-up, e.g. hero subtitle */
+  .mount-fade-up {
+    opacity: 0;
+    animation: fade-up 0.7s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards;
+    animation-delay: var(--mount-delay, 0s);
+  }
+
+  /* Hero word-by-word reveal — pure CSS stagger */
+  .word-stagger > span {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+  .word-stagger > span > span {
+    display: inline-block;
+    white-space: pre;
+    transform: translate3d(0, 100%, 0);
+    animation: word-up 0.8s cubic-bezier(0.21, 0.47, 0.32, 0.98) forwards;
+    animation-delay: calc(var(--word-base-delay, 0s) + var(--word-index, 0) * 80ms);
+  }
+
+  /* Skip rendering offscreen sections */
+  @supports (content-visibility: auto) {
+    .cv-auto {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 800px;
+    }
+  }
+
+  /* Navbar scrolled state, toggled by IntersectionObserver */
+  .nav-scrolled {
+    @apply border-b border-foreground/10 bg-background/70 backdrop-blur-xl;
+  }
+
+  /* Mobile menu CSS-driven open/close */
+  .mobile-menu-panel {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .mobile-menu-panel[data-open="true"] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-menu-panel li {
+    opacity: 0;
+    transform: translate3d(-24px, 0, 0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: 0s;
+  }
+  .mobile-menu-panel[data-open="true"] li {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transition-delay: calc(var(--menu-i, 0) * 50ms);
+  }
+
+  /* Theme toggle icon swap — opacity + rotation */
+  .theme-icon {
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  }
+  .theme-icon[data-active="false"] {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.6);
+  }
+  .theme-icon[data-active="true"] {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Experience tab panel re-mount animation */
+  .panel-enter {
+    animation: fade-up 0.5s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  }
+  .panel-list-item {
+    opacity: 0;
+    animation: fade-up 0.4s ease forwards;
+    animation-delay: calc(0.1s + var(--item-i, 0) * 60ms);
+  }
+
+  /* Status message in contact form */
+  .status-enter {
+    animation: fade-up 0.3s ease;
+  }
+
+  /* Pulsing availability dot */
+  .pulse-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: hsl(var(--amber));
+    animation: pulse-dot 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  /* Marquee */
+  .animate-marquee-css {
+    animation: marquee 40s linear infinite;
+  }
+
+  /* Grain overlay */
+  .grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: overlay;
+  }
+  .dark .grain::before { opacity: 0.04; }
+
+  /* Ambient amber glow */
+  .glow-amber {
+    background: radial-gradient(ellipse at center,
+      hsl(var(--amber) / 0.12) 0%,
+      hsl(var(--amber) / 0.05) 35%,
+      transparent 70%);
+  }
+  .dark .glow-amber {
+    background: radial-gradient(ellipse at center,
+      hsl(var(--amber) / 0.18) 0%,
+      hsl(var(--amber) / 0.06) 35%,
+      transparent 70%);
+  }
+  .glow-pulse {
+    animation: glow-pulse 6s ease-in-out infinite;
+  }
+
+  .hairline { border-color: hsl(var(--foreground) / 0.08); }
+
+  .section-marker {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  .display-serif { @apply font-serif font-normal tracking-tight; }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  /* Prevent transitions during theme switch (next-themes adds .disable-transitions) */
+  .disable-transitions * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Honor reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .mount-fade-up { opacity: 1; transform: none; }
+  .word-stagger > span > span { transform: none; }
+}
