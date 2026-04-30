@@ -79,10 +79,11 @@ export function Banner() {
             </Magnetic>
             <Magnetic>
               <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 border border-foreground/20 px-6 py-3 text-sm hover:border-amber hover:text-amber transition-colors"
+                  download
+                  href="/images/Md-Anik-Miah-20260120.pdf"
+                  className="inline-flex items-center gap-2 border border-foreground/20 px-6 py-3 text-sm hover:border-amber hover:text-amber transition-colors"
               >
-                Get in touch
+                Download CV
               </Link>
             </Magnetic>
           </div>
