@@ -217,7 +217,7 @@ export const posts: Post[] = [
     readTime: '10 min read',
     tag: 'Frontend',
     slug: 'psd-to-react-workflow',
-    link: '3'
+    link: 'https://anikm2283.medium.com/psd-to-react-done-right-a-developers-guide-to-modern-conversion-f9da8cf2e887'
   },
   {
     title: 'Material UI vs Tailwind — A Frontend Engineer Picks',
@@ -227,6 +227,6 @@ export const posts: Post[] = [
     readTime: '14 min read',
     tag: 'CSS',
     slug: 'mui-vs-tailwind',
-    link: '4'
+    link: 'https://anikm2283.medium.com/1-material-ui-mui-the-component-first-framework-bf6604afe358'
   },
 ];
