@@ -32,7 +32,8 @@ export default function BlogIndex() {
         {posts.map((post) => (
           <li key={post.slug} className="bg-background">
             <Link
-              href={`/blog/${post.slug}`}
+              href={post?.link}
+              target="_blank" rel="noopener noreferrer" aria-label={`Open ${post.title}`}
               className="group grid md:grid-cols-[1fr_auto] gap-4 px-2 md:px-6 py-8 hover:bg-foreground/[0.02] transition-colors"
             >
               <div>
