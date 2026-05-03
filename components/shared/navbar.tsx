@@ -8,12 +8,12 @@ import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 
 const nav = [
-  { href: '#about', label: 'About', n: '01' },
-  { href: '#experience', label: 'Experience', n: '02' },
-  { href: '#education', label: 'Education', n: '03' },
-  { href: '#projects', label: 'Projects', n: '04' },
-  { href: '#blog', label: 'Writing', n: '05' },
-  { href: '#contact', label: 'Contact', n: '06' },
+  { href: '/#about', label: 'About', n: '01' },
+  { href: '/#experience', label: 'Experience', n: '02' },
+  { href: '/#education', label: 'Education', n: '03' },
+  { href: '/#projects', label: 'Projects', n: '04' },
+  { href: '/#blog', label: 'Writing', n: '05' },
+  { href: '/#contact', label: 'Contact', n: '06' },
 ];
 
 export function Navbar() {
