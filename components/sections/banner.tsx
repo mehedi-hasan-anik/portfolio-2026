@@ -110,13 +110,13 @@ export function Banner() {
       </div>
 
       {/* Scroll indicator */}
-      {/*<div*/}
-      {/*  className="mount-fade-up absolute bottom-8 right-6 md:right-10 hidden md:flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-muted-foreground"*/}
-      {/*  style={{ '--mount-delay': '2s' } as CSSProperties}*/}
-      {/*>*/}
-      {/*  <span>Scroll</span>*/}
-      {/*  <ArrowDown className="h-3.5 w-3.5 animate-bounce" />*/}
-      {/*</div>*/}
+      <div
+        className="mount-fade-up absolute bottom-8 right-6 md:right-10 hidden md:flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-muted-foreground"
+        style={{ '--mount-delay': '2s' } as CSSProperties}
+      >
+        <span>Scroll</span>
+        <ArrowDown className="h-3.5 w-3.5 animate-bounce" />
+      </div>
     </section>
   );
 }
