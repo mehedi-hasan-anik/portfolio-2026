@@ -80,7 +80,7 @@ export function Banner() {
             <Magnetic>
               <Link
                   download
-                  href="/images/Md-Anik-Miah-20260120.pdf"
+                  href="/images/Md-Anik-Miah.pdf"
                   className="inline-flex items-center gap-2 border border-foreground/20 px-6 py-3 text-sm hover:border-amber hover:text-amber transition-colors"
               >
                 Download CV
