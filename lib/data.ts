@@ -101,6 +101,14 @@ export const education = [
     detail:
       'Studied core CS — data structures, algorithms, databases, and software engineering — while working professionally as a frontend developer on the side.',
   },
+  {
+    institution: 'Ghatail Cantonment Public School & College',
+    degree: 'Higher Secondary (Science)',
+    period: 'Passed 2015',
+    location: 'Ghatail, Tangail, Bangladesh',
+    detail:
+        'Completed Higher Secondary education in Science group with a focus on physics, chemistry, and mathematics.',
+  },
 ];
 
 export type Project = {
